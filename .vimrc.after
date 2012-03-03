@@ -23,3 +23,6 @@ hi Normal		ctermfg=254		ctermbg=234		cterm=none		guifg=#f6f3e8	guibg=#121212	gui
 " http://vim.wikia.com/wiki/Hide_toolbar_or_menus_to_see_more_text
 set guioptions-=T 
 
+" Don't autowrap lines
+set textwidth=0
+au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=0
