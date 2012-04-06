@@ -26,3 +26,12 @@ set guioptions-=T
 " Don't autowrap lines
 set textwidth=0
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=0
+
+" Make tab completion show list of files
+" http://stackoverflow.com/a/526940/137067
+set wildmode=longest,list,full
+set wildmenu
+
+" Don't keep swp files, since git keeps everything safe
+set noswapfile
+
