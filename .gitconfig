@@ -37,6 +37,7 @@
 	d = diff
 	dc = diff --cached
 	rb = rebase
+	br = branch
 	co = "!f(){ git checkout \"$@\" && git submodule update --init --recursive --quiet; }; f"
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	unstage = reset HEAD
