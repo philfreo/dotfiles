@@ -35,3 +35,7 @@ set wildmenu
 " Don't keep swp files, since git keeps everything safe
 set noswapfile
 
+" Auto-trim whitespace on lines when saving files of certain types
+" http://vim.wikia.com/wiki/Remove_unwanted_spaces
+autocmd FileType python,php autocmd BufWritePre <buffer> :%s/\s\+$//e
+
