@@ -43,5 +43,5 @@
 	unstage = reset HEAD
 	subdate = submodule update --init --recursive --quiet
 	ca = commit --amend
-	caa = commit -a --amend -C HEAD
+	fix = commit -a --amend -C HEAD
 	up = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
