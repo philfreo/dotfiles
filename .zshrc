@@ -14,9 +14,6 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-#export PATH=/Users/philfreo/.rvm/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/subversion:/Applications/TextEdit.app/Contents/MacOS/
-
 # navigational shortcuts
 alias cdsites="cd ~/Sites";
 alias cdes="cd ~/Sites/_es/elastic";
