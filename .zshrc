@@ -17,7 +17,7 @@ source $ZSH/oh-my-zsh.sh
 # navigational shortcuts
 alias cdsites="cd ~/Sites";
 # cd up to the root of a git project
-alias cdg="cd $(git rev-parse --show-cdup)"
+alias cdg='cd $(git rev-parse --show-cdup)'
 
 # hidden files shortcutes
 alias showhiddenfiles="defaults write com.apple.Finder AppleShowAllFiles YES; killall Finder";
