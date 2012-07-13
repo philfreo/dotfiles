@@ -5,6 +5,9 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
+" Mouse support (in non gui mode)
+set mouse=a
+
 " Don't show whitespace as visible characters
 set nolist
 
