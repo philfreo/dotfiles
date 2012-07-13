@@ -1,0 +1,6 @@
+[submodule ".janus/vim-less"]
+	path = .janus/vim-less
+	url = https://github.com/groenewege/vim-less.git
+[submodule ".janus/mustache.vim"]
+	path = .janus/mustache.vim
+	url = git://github.com/juvenn/mustache.vim.git
