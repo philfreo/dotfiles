@@ -47,7 +47,7 @@ alias venv="source ./venv/bin/activate"
 
 # Python Stuff
 export PYTHONPATH=".:./lib";
-alias pipr="pip install -U -r requirements.txt"
+alias pipr="pip install -U --exists-action=s -r requirements.txt"
 
 # Ruby RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
