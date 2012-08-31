@@ -58,3 +58,5 @@ export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:$PATH
 # (Fixes pip install gevent, etc.)
 export CFLAGS="-I/opt/local/include $CFLAGS"
 export LDFLAGS="-L/opt/local/lib $LDFLAGS"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
