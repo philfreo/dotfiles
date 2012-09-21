@@ -7,3 +7,6 @@
 [submodule ".janus/pyflakes-vim"]
 	path = .janus/pyflakes-vim
 	url = git://github.com/kevinw/pyflakes-vim.git
+[submodule ".janus/vim-surround.vim"]
+	path = .janus/vim-surround.vim
+	url = git://github.com/tpope/vim-surround.git
