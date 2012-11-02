@@ -42,3 +42,7 @@ set noswapfile
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 autocmd FileType python,php autocmd BufWritePre <buffer> :%s/\s\+$//e
 
+" Turn in cursor line depending on mode
+" http://stackoverflow.com/a/6489348/137067
+autocmd InsertEnter * set cul
+autocmd InsertLeave * set nocul

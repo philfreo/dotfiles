@@ -10,3 +10,6 @@
 [submodule ".janus/vim-surround.vim"]
 	path = .janus/vim-surround.vim
 	url = git://github.com/tpope/vim-surround.git
+[submodule ".janus/vim-repeat"]
+	path = .janus/vim-repeat
+	url = git://github.com/tpope/vim-repeat.git
