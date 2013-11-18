@@ -3,3 +3,4 @@
 --type-add=html=.hbs
 --nosql
 --ignore-dir=venv
+--ignore-dir=node_modules
