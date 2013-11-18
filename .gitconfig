@@ -57,5 +57,6 @@
 	stup = !"git stash && git pl && git ps && git stash pop"
 	ps = !"git push origin `git branch | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'`"
 	pl = !"git pull --rebase origin `git branch | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'`"
+	today = log --since=midnight --author='Phil Freo' --oneline
 [merge]
 	tool = opendiff
