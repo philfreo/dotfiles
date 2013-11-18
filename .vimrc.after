@@ -29,6 +29,7 @@ set guioptions-=T
 " Don't autowrap lines
 set textwidth=0
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=0
+au FileType puppet set softtabstop=2 tabstop=2 shiftwidth=2 textwidth=0
 
 " Make tab completion show list of files
 " http://stackoverflow.com/a/526940/137067
@@ -41,6 +42,10 @@ set noswapfile
 " Auto-trim whitespace on lines when saving files of certain types
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 autocmd FileType python,php autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+" Map certain extensions to file types
+autocmd BufNewFile,BufRead *.py.local set filetype=py
+autocmd BufNewFile,BufRead *.py.production set filetype=py
 
 " Turn in cursor line depending on mode
 " http://stackoverflow.com/a/6489348/137067
