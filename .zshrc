@@ -61,7 +61,12 @@ export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:$PATH
 
 # Allow built-in compiler to access header files installed by MacPorts
 # (Fixes pip install gevent, etc.)
-export CFLAGS="-I/opt/local/include $CFLAGS"
-export LDFLAGS="-L/opt/local/lib $LDFLAGS"
+#export CFLAGS="-I/opt/local/include $CFLAGS"
+#export LDFLAGS="-L/opt/local/lib $LDFLAGS"
+export CFLAGS=-I/opt/local/include
+export LDFLAGS=-L/opt/local/lib
+export PYTHONPATH=.:lib
+export PATH=$PATH:/opt/local/bin
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# rbenv (via homebrew) for ruby
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
