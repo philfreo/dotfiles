@@ -16,6 +16,11 @@ plugins=(git osx terminalapp python)
 
 source $ZSH/oh-my-zsh.sh
 
+# Faster git completion
+__git_files () {
+    _wanted files expl 'local files' _files
+}
+
 # navigational shortcuts
 alias cdsites="cd ~/Sites";
 # cd up to the root of a git project
