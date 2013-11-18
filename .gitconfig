@@ -60,3 +60,5 @@
 	today = log --since=midnight --author='Phil Freo' --oneline
 [merge]
 	tool = opendiff
+[push]
+	default = simple
