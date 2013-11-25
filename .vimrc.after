@@ -44,8 +44,8 @@ set noswapfile
 autocmd FileType python,php autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Map certain extensions to file types
-autocmd BufNewFile,BufRead *.py.local set filetype=py
-autocmd BufNewFile,BufRead *.py.production set filetype=py
+autocmd BufNewFile,BufRead *.py.local set filetype=python
+autocmd BufNewFile,BufRead *.py.production set filetype=python
 
 " Turn in cursor line depending on mode
 " http://stackoverflow.com/a/6489348/137067
