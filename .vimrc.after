@@ -52,3 +52,6 @@ autocmd BufNewFile,BufRead *.py.production set filetype=python
 " http://stackoverflow.com/a/6489348/137067
 autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
+
+" Disable Syntastic syntax warnings (espically strict for python)
+let g:syntastic_quiet_messages = { "type": "style" }
