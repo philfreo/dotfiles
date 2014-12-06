@@ -27,8 +27,8 @@ alias cdsites="cd ~/Sites";
 alias cdg='cd $(git rev-parse --show-cdup)'
 
 # hidden files shortcutes
-alias showhiddenfiles="defaults write com.apple.Finder AppleShowAllFiles YES; killall Finder";
-alias hidehiddenfiles="defaults write com.apple.Finder AppleShowAllFiles NO; killall Finder";
+alias showhiddenfiles="defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder";
+alias hidehiddenfiles="defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder";
 
 # git shortcuts that git aliases can't easily do
 alias st="clear; git status";
