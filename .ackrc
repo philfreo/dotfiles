@@ -1,6 +1,7 @@
 --type-add=ruby=.haml,.rake
 --type-add=css=.less
 --type-add=html=.hbs
+--type-add=pp=.pp
 --nosql
 --ignore-dir=venv
 --ignore-dir=node_modules
