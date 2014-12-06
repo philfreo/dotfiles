@@ -46,8 +46,7 @@ alias apacherestart="sudo /opt/local/apache2/bin/apachectl graceful";
 alias memcachestart="memcached -m 24 -p 11211 -d -l 127.0.0.1";
 alias memcachestop="killall memcached";
 
-# virtualenv helpers
-alias virtualenv="virtualenv-2.7"
+# Python pip/virtualenv helpers
 alias venv="source ./venv/bin/activate"
 
 # Python Stuff
@@ -68,5 +67,11 @@ export LDFLAGS=-L/opt/local/lib
 export PYTHONPATH=.:lib
 export PATH=$PATH:/opt/local/bin
 
+# so pip can install postgres stuff
+export PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
+
 # rbenv (via homebrew) for ruby
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+export NVM_DIR="/Users/philfreo/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
