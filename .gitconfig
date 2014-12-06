@@ -13,9 +13,9 @@
 
 [color "diff"]
 	meta = yellow bold
-	frag = magenta 
-	old = red 
-	new = green 
+	frag = magenta
+	old = red
+	new = green
 
 [color "status"]
 	added = yellow
@@ -58,8 +58,11 @@
 	ps = !"git push origin `git branch | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'`"
 	pl = !"git pull --rebase origin `git branch | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'`"
 	today = log --since=midnight --author='Phil Freo' --oneline --all
+	yesterday = log --since=yesterday.midnight --until=midnight --author='Phil Freo' --oneline --all
+	me = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --author='Phil Freo' --all
 [merge]
 	tool = opendiff
+    renamelimit = 50000
 [push]
 	default = simple
 [filter "media"]
