@@ -53,9 +53,6 @@ alias venv="source ./venv/bin/activate"
 export PYTHONPATH=".:./lib";
 alias pipr="pip install -U --exists-action=s -r requirements.txt"
 
-# Ruby RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
-
 export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:$PATH
 
 # Allow built-in compiler to access header files installed by MacPorts
