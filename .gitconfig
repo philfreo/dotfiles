@@ -1,70 +1,80 @@
 [user]
-	name = Phil Freo
-	email = phil@philfreo.com
+    name = Phil Freo
+    email = phil@philfreo.com
 
 [color]
-	ui = true
-	pager = true
+    ui = true
+    pager = true
 
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+    current = yellow reverse
+    local = yellow
+    remote = green
 
 [color "diff"]
-	meta = yellow bold
-	frag = magenta
-	old = red
-	new = green
+    meta = yellow bold
+    frag = magenta
+    old = red
+    new = green
 
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+    added = yellow
+    changed = green
+    untracked = cyan
 
 [core]
-	pager = less -FRSX
-	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	excludesfile = ~/.gitignore
-	quotepath = false
-	autocrlf = input
-	editor = vim
+    #pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    excludesfile = ~/.gitignore
+    quotepath = false
+    autocrlf = input
+    editor = vim
+
+[pager]
+    diff = diff-so-fancy | less --tabs=4 -RFX
+    show = diff-so-fancy | less --tabs=4 -RFX
 
 [alias]
-	st = status
-	ci = commit
-	ic = commit
-	cia = commit -a
-	cp = cherry-pick
-	a = add
-	d = diff
-	dc = diff --cached
-	rb = rebase
-	br = branch
-	#co = checkout
-	co = "!f(){ git checkout \"$@\" && git submodule update --init --recursive --quiet; }; f"
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	unstage = reset HEAD
-	subdate = submodule update --init --recursive --quiet
-	sub = submodule update --init --recursive --quiet
-	ca = commit --amend
-	fix = commit -a --amend -C HEAD
-	up = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
-	mt = mergetool
-	m = merge --no-ff
-	pu = pull
+    st = status
+    ci = commit
+    ic = commit
+    cia = commit -a
+    cp = cherry-pick
+    a = add
+    d = diff
+    dc = diff --cached
+    rb = rebase
+    br = branch
+    #co = checkout
+    co = "!f(){ git checkout \"$@\" && git submodule update --init --recursive --quiet; }; f"
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    unstage = reset HEAD
+    subdate = submodule update --init --recursive --quiet
+    sub = submodule update --init --recursive --quiet
+    ca = commit --amend
+    fix = commit -a --amend -C HEAD
+    up = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
+    mt = mergetool
+    m = merge --no-ff
+    pu = pull
+    pushstaging = !sh -c 'git branch -D staging && git checkout -b staging && git push -f -u origin staging'
 
-	stup = !"git stash && git pl && git ps && git stash pop"
-	ps = !"git push origin `git branch | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'`"
-	pl = !"git pull --rebase origin `git branch | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'`"
-	today = log --since=midnight --author='Phil Freo' --oneline --all
-	yesterday = log --since=yesterday.midnight --until=midnight --author='Phil Freo' --oneline --all
-	me = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --author='Phil Freo' --all
+    stup = !"git stash && git pl && git ps && git stash pop"
+    ps = !"git push origin `git branch | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'`"
+    pl = !"git pull --rebase origin `git branch | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'`"
+    today = log --since=midnight --author='Phil Freo' --oneline --all
+    yesterday = log --since=yesterday.midnight --until=midnight --author='Phil Freo' --oneline --all
+    me = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --author='Phil Freo' --all
+    dummy = commit --allow-empty
 [merge]
-	tool = opendiff
+    tool = opendiff
     renamelimit = 50000
 [push]
-	default = simple
+    default = simple
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+    clean = git-media-clean %f
+    smudge = git-media-smudge %f
+[filter "lfs"]
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true

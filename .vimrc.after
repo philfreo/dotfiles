@@ -31,6 +31,8 @@ set guioptions-=T
 set textwidth=0
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=0
 au FileType puppet set softtabstop=2 tabstop=2 shiftwidth=2 textwidth=0
+au FileType ruby set softtabstop=2 tabstop=2 shiftwidth=2 textwidth=0
+au FileType php set noexpandtab tabstop=4 shiftwidth=4 textwidth=0
 
 " Make tab completion show list of files
 " http://stackoverflow.com/a/526940/137067
@@ -42,7 +44,7 @@ set noswapfile
 
 " Auto-trim whitespace on lines when saving files of certain types
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
-autocmd FileType python,php autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType javascript,python,php,less,css autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Map certain extensions to file types
 autocmd BufNewFile,BufRead *.py.local set filetype=python

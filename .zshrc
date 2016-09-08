@@ -38,22 +38,16 @@ alias gitprp='git pull --rebase && git push'
 
 # Shortcuts for starting/stopping various services 
 alias db='mysql -u root -A'
-alias dbstart="sudo /opt/local/share/mysql55/support-files/mysql.server start";
-alias dbstop="sudo /opt/local/share/mysql55/support-files/mysql.server stop";
-alias apachestart="sudo /opt/local/apache2/bin/apachectl start";
-alias apachestop="sudo /opt/local/apache2/bin/apachectl stop";
-alias apacherestart="sudo /opt/local/apache2/bin/apachectl graceful";
 alias memcachestart="memcached -m 24 -p 11211 -d -l 127.0.0.1";
 alias memcachestop="killall memcached";
 
 # Python pip/virtualenv helpers
 alias venv="source ./venv/bin/activate"
 
-# Python Stuff
-export PYTHONPATH=".:./lib";
-alias pipr="pip install -U --exists-action=s -r requirements.txt"
+alias pipru="pip install -U --exists-action=s -r requirements.txt"
+alias pipr="pip install --no-deps --exists-action=s -r requirements.txt"
 
-export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:$PATH
 
 # Allow built-in compiler to access header files installed by MacPorts
 # (Fixes pip install gevent, etc.)
@@ -61,14 +55,19 @@ export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:$PATH
 #export LDFLAGS="-L/opt/local/lib $LDFLAGS"
 export CFLAGS=-I/opt/local/include
 export LDFLAGS=-L/opt/local/lib
-export PYTHONPATH=.:lib
+export PYTHONPATH=.
 export PATH=$PATH:/opt/local/bin
 
 # so pip can install postgres stuff
-export PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
 
 # rbenv (via homebrew) for ruby
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# pyenv (via homebrew) for python
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+source ~/.secrets.env
 
 export NVM_DIR="/Users/philfreo/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
