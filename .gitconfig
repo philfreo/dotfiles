@@ -57,7 +57,7 @@
     mt = mergetool
     m = merge --no-ff
     pu = pull
-    pushstaging = !sh -c 'git branch -D staging && git checkout -b staging && git push -f -u origin staging'
+    pushstaging = push -f origin HEAD:staging
 
     stup = !"git stash && git pl && git ps && git stash pop"
     ps = !"git push origin `git branch | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'`"
