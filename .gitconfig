@@ -57,7 +57,9 @@
     mt = mergetool
     m = merge --no-ff
     pu = pull
-    pushstaging = push -f origin HEAD:staging
+    push-staging = push -f origin HEAD:staging
+    push-canary-web = push -f origin HEAD:canary-web
+    push-canary-worker = push -f origin HEAD:canary-worker
 
     stup = !"git stash && git pl && git ps && git stash pop"
     ps = !"git push origin `git branch | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'`"
