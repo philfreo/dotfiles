@@ -59,7 +59,10 @@ export PYTHONPATH=.
 export PATH=$PATH:/opt/local/bin
 
 # so pip can install postgres stuff
-export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
+# Make yarn's globally installed bins accessible
+export PATH="$PATH:`yarn global bin`"
 
 # rbenv (via homebrew) for ruby
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

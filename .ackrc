@@ -1,5 +1,5 @@
 --type-add=ruby=.haml,.rake
---type-add=css=.less
+--type-add=css=.less,.scss,.sass
 --type-add=html=.hbs
 --type-add=pp=.pp
 --type-set=rb=.rb

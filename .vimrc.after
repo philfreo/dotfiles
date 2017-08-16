@@ -1,9 +1,9 @@
 " Usings 4 space indentation only
 " http://tedlogan.com/techblog3.html
 set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 
 " Mouse support (in non gui mode)
 set mouse=a
@@ -25,7 +25,7 @@ colorscheme summerfruit256
 
 " Turn off MacVim toolbar
 " http://vim.wikia.com/wiki/Hide_toolbar_or_menus_to_see_more_text
-set guioptions-=T 
+set guioptions-=T
 
 " Don't autowrap lines
 set textwidth=0
@@ -47,8 +47,7 @@ set noswapfile
 autocmd FileType javascript,python,php,less,css autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Map certain extensions to file types
-autocmd BufNewFile,BufRead *.py.local set filetype=python
-autocmd BufNewFile,BufRead *.py.production set filetype=python
+" autocmd BufNewFile,BufRead *.py.local set filetype=python
 
 " Turn in cursor line depending on mode
 " http://stackoverflow.com/a/6489348/137067
@@ -57,3 +56,6 @@ autocmd InsertLeave * set nocul
 
 " Disable Syntastic syntax warnings (espically strict for python)
 let g:syntastic_quiet_messages = { "type": "style" }
+
+set relativenumber
+set number
