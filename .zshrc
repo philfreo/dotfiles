@@ -48,15 +48,13 @@ alias pipru="pip install -U --exists-action=s -r requirements.txt"
 alias pipr="pip install --no-deps --exists-action=s -r requirements.txt"
 
 export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=/Users/philfreo/.local/bin:$PATH
 
-# Allow built-in compiler to access header files installed by MacPorts
-# (Fixes pip install gevent, etc.)
-#export CFLAGS="-I/opt/local/include $CFLAGS"
-#export LDFLAGS="-L/opt/local/lib $LDFLAGS"
-export CFLAGS=-I/opt/local/include
-export LDFLAGS=-L/opt/local/lib
-export PYTHONPATH=.
+export PATH=/Users/philfreo/Library/Python/2.7/bin:$PATH
+
 export PATH=$PATH:/opt/local/bin
+
+export PYTHONPATH=.
 
 # so pip can install postgres stuff
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
@@ -69,6 +67,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # pyenv (via homebrew) for python
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
 
 source ~/.secrets.env
 
