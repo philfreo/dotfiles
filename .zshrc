@@ -36,11 +36,6 @@ alias g='git'
 alias gitspp='git stash; git pull --rebase; git stash pop'
 alias gitprp='git pull --rebase && git push'
 
-# Shortcuts for starting/stopping various services 
-alias db='mysql -u root -A'
-alias memcachestart="memcached -m 24 -p 11211 -d -l 127.0.0.1";
-alias memcachestop="killall memcached";
-
 # Python pip/virtualenv helpers
 alias venv="source ./venv/bin/activate"
 
