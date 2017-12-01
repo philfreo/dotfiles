@@ -26,10 +26,6 @@ alias cdsites="cd ~/Sites";
 # cd up to the root of a git project
 alias cdg='cd $(git rev-parse --show-cdup)'
 
-# hidden files shortcutes
-alias showhiddenfiles="defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder";
-alias hidehiddenfiles="defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder";
-
 # git shortcuts that git aliases can't easily do
 alias st="clear; git status";
 alias g='git'
