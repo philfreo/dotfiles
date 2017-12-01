@@ -1,6 +1,7 @@
 [user]
 	name = Phil Freo
 	email = phil@philfreo.com
+	signingkey = 2DCAC2F78DAA538B
 
 [color]
 	ui = true
@@ -80,3 +81,7 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/local/bin/gpg
