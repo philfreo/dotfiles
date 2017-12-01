@@ -33,6 +33,7 @@ au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=0
 au FileType puppet set softtabstop=2 tabstop=2 shiftwidth=2 textwidth=0
 au FileType ruby set softtabstop=2 tabstop=2 shiftwidth=2 textwidth=0
 au FileType php set noexpandtab tabstop=4 shiftwidth=4 textwidth=0
+au FileType gitconfig set noexpandtab tabstop=4 shiftwidth=4 textwidth=0
 
 " Make tab completion show list of files
 " http://stackoverflow.com/a/526940/137067
