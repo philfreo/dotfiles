@@ -38,12 +38,10 @@ alias venv="source ./venv/bin/activate"
 alias pipru="pip install -U --exists-action=s -r requirements.txt"
 alias pipr="pip install --no-deps --exists-action=s -r requirements.txt"
 
-export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=/Users/philfreo/.local/bin:$PATH
 
 export PATH=/Users/philfreo/Library/Python/2.7/bin:$PATH
-
-export PATH=$PATH:/opt/local/bin
 
 export PYTHONPATH=.
 
@@ -58,7 +56,6 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # pyenv (via homebrew) for python
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
 
 source ~/.secrets.env
 
