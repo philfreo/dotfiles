@@ -31,6 +31,7 @@ alias st="clear; git status";
 alias g='git'
 alias gitspp='git stash; git pull --rebase; git stash pop'
 alias gitprp='git pull --rebase && git push'
+alias dc='docker-compose'
 
 # Python pip/virtualenv helpers
 alias venv="source ./venv/bin/activate"
