@@ -34,6 +34,7 @@
 [pager]
 	diff = diff-so-fancy | less --tabs=4 -RFX
 	show = diff-so-fancy | less --tabs=4 -RFX
+	branch =
 
 [alias]
 	st = status
@@ -58,6 +59,7 @@
 	mt = mergetool
 	m = merge --no-ff
 	pu = pull
+	pul = pull
 	push-staging = push -f origin HEAD:staging
 	push-canary-web = push -f origin HEAD:canary-web
 	push-canary-worker = push -f origin HEAD:canary-worker

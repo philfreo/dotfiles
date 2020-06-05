@@ -8,3 +8,4 @@
 --ignore-dir=venv
 --ignore-dir=.tox
 --ignore-dir=node_modules
+--ignore-dir=.sass-cache

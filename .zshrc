@@ -1,25 +1,46 @@
-export EDITOR=vim
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
-# Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="wedisagree-phil"
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="robbyrussell"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx python docker redis-cli yarn)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+	git osx python docker redis-cli yarn
+)
 
 source $ZSH/oh-my-zsh.sh
 
-# Faster git completion
-__git_files () {
-    _wanted files expl 'local files' _files
-}
+# User configuration
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='vim' # mvim
+fi
 
 # navigational shortcuts
 alias cdsites="cd ~/Sites";
@@ -33,32 +54,17 @@ alias gitspp='git stash; git pull --rebase; git stash pop'
 alias gitprp='git pull --rebase && git push'
 alias dc='docker-compose'
 
-# Python pip/virtualenv helpers
-alias venv="source ./venv/bin/activate"
-
-alias pipru="pip install -U --exists-action=s -r requirements.txt"
-alias pipr="pip install --no-deps --exists-action=s -r requirements.txt"
-
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=/Users/philfreo/.local/bin:$PATH
-
-export PATH=/Users/philfreo/Library/Python/2.7/bin:$PATH
-
-export PYTHONPATH=.
-
-# so pip can install postgres stuff
-export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-
-# Make yarn's globally installed bins accessible
-export PATH="$PATH:`yarn global bin`"
-
 # rbenv (via homebrew) for ruby
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # pyenv (via homebrew) for python
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
-source ~/.secrets.env
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/sbin:$PATH"
 
-export NVM_DIR="/Users/philfreo/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+alias dotfiles='/usr/bin/git --git-dir=/Users/philfreo/.dotfiles/ --work-tree=/Users/philfreo'
