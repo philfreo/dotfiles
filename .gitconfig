@@ -38,6 +38,7 @@
 
 [alias]
 	st = status
+	sho = show
 	ci = commit
 	ic = commit
 	cia = commit -a
