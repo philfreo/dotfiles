@@ -123,10 +123,10 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # export PATH="/usr/local/sbin:$PATH"
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-# [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# n node version management
 export N_PREFIX=$HOME/.n
 export PATH=$N_PREFIX/bin:$PATH
 
+# Use 'dotfiles' like 'git' to manage dotfiles
+# https://github.com/philfreo/dotfiles
 alias dotfiles='/usr/bin/git --git-dir=/Users/philfreo/.dotfiles/ --work-tree=/Users/philfreo'
