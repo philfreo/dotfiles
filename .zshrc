@@ -132,4 +132,4 @@ export PATH=$N_PREFIX/bin:$PATH
 alias dotfiles='/usr/bin/git --git-dir=/Users/philfreo/.dotfiles/ --work-tree=/Users/philfreo'
 
 # Close dev env
-ARCH_TAG=-arm64
+export ARCH_TAG=-arm64
