@@ -91,7 +91,7 @@ else
 fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# export ARCHFLAGS="-arch arm64"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -130,3 +130,6 @@ export PATH=$N_PREFIX/bin:$PATH
 # Use 'dotfiles' like 'git' to manage dotfiles
 # https://github.com/philfreo/dotfiles
 alias dotfiles='/usr/bin/git --git-dir=/Users/philfreo/.dotfiles/ --work-tree=/Users/philfreo'
+
+# Close dev env
+ARCH_TAG=-arm64
