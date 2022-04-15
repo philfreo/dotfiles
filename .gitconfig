@@ -68,9 +68,9 @@
 	stup = !"git stash && git pl && git ps && git stash pop"
 	ps = !"git push origin `git branch | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'`"
 	pl = !"git pull --rebase origin `git branch | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'`"
-	today = log --since=midnight --author='Phil Freo' --oneline --all
-	yesterday = log --since=yesterday.midnight --until=midnight --author='Phil Freo' --oneline --all
-	me = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --author='Phil Freo' --all
+	today = !"git log --since=midnight --author=\"`git config user.name`\" --oneline --all"
+	yesterday = !"git log --since=yesterday.midnight --until=midnight --author=\"`git config user.name`\" --oneline --all"
+	me = !"git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --author=\"`git config user.name`\" --all"
 	dummy = commit --allow-empty
 [merge]
 	tool = opendiff
