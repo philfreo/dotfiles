@@ -48,8 +48,8 @@
 	dc = diff --cached
 	rb = rebase
 	br = branch
-	#co = checkout
-	co = "!f(){ git checkout \"$@\" && git submodule update --init --recursive --quiet; }; f"
+	co = checkout
+	#co = "!f(){ git checkout \"$@\" && git submodule update --init --recursive --quiet; }; f"
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	unstage = reset HEAD
 	subdate = submodule update --init --recursive --quiet
@@ -57,6 +57,7 @@
 	ca = commit --amend
 	fix = commit -a --amend -C HEAD
 	up = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
+	prune = "!git branch --merged | grep -v -P '^\\*|master|develop' | xargs -n1 -r git branch -d"
 	mt = mergetool
 	m = merge --no-ff
 	pu = pull
@@ -65,13 +66,14 @@
 	push-canary-web = push -f origin HEAD:canary-web
 	push-canary-worker = push -f origin HEAD:canary-worker
 
-	stup = !"git stash && git pl && git ps && git stash pop"
-	ps = !"git push origin `git branch | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'`"
-	pl = !"git pull --rebase origin `git branch | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'`"
+	#stup = !"git stash && git pl && git ps && git stash pop"
+	#ps = !"git push origin `git branch | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'`"
+	#pl = !"git pull --rebase origin `git branch | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'`"
 	today = !"git log --since=midnight --author=\"`git config user.name`\" --oneline --all"
 	yesterday = !"git log --since=yesterday.midnight --until=midnight --author=\"`git config user.name`\" --oneline --all"
 	me = !"git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --author=\"`git config user.name`\" --all"
 	dummy = commit --allow-empty
+
 [merge]
 	tool = opendiff
 	renamelimit = 50000
