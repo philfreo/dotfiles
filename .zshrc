@@ -117,6 +117,8 @@ alias gitspp='git stash; git pull --rebase; git stash pop'
 alias gitprp='git pull --rebase && git push'
 alias dc='docker-compose'
 
+alias pbpaste-rtf='osascript -e '\''the clipboard as "HTML"'\''|perl -ne '\''print chr foreach unpack("C*",pack("H*",substr($_,11,-3)))'\'
+
 # rbenv (via homebrew) for ruby
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
