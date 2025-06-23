@@ -1,6 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -128,19 +125,12 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # export PATH="/usr/local/sbin:$PATH"
 
-# n node version management
-export N_PREFIX=$HOME/.n
-export PATH=$N_PREFIX/bin:$PATH
-
 # Use 'dotfiles' like 'git' to manage dotfiles
 # https://github.com/philfreo/dotfiles
 alias dotfiles='/usr/bin/git --git-dir=/Users/philfreo/.dotfiles/ --work-tree=/Users/philfreo'
 
 # Close dev env
 export ARCH_TAG=-arm64
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
 
 # Bat Theme - https://github.com/sharkdp/bat#customization
 export BAT_THEME="GitHub"
