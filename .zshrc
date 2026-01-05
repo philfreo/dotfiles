@@ -120,8 +120,5 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # https://github.com/philfreo/dotfiles
 alias dotfiles='/usr/bin/git --git-dir=/Users/philfreo/.dotfiles/ --work-tree=/Users/philfreo'
 
-# Close dev env
-export ARCH_TAG=-arm64
-
 # Bat Theme - https://github.com/sharkdp/bat#customization
 export BAT_THEME="GitHub"
