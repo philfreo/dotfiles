@@ -93,13 +93,11 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# navigational shortcuts
-alias cdsites="cd ~/Sites";
 # cd up to the root of a git project
 alias cdg='cd $(git rev-parse --show-cdup)'
 
 # git shortcuts that git aliases can't easily do
-alias st="clear; git status";
+alias st="clear; git status"
 alias g='git'
 alias gitspp='git stash; git pull --rebase; git stash pop'
 alias gitprp='git pull --rebase && git push'
@@ -122,3 +120,44 @@ alias dotfiles='/usr/bin/git --git-dir=/Users/philfreo/.dotfiles/ --work-tree=/U
 
 # Bat Theme - https://github.com/sharkdp/bat#customization
 export BAT_THEME="GitHub"
+
+# convertmov input.mov to create a .webm and .mp4
+function convertmov() {
+  if [ -z "$1" ]; then
+    echo "Please specify a .mov file"
+    return 1
+  fi
+  
+  input_file="$1"
+  output_file="${input_file%.*}"
+  
+  ffmpeg -i "$input_file" -c:v libvpx -crf 10 -b:v 1M -c:a libvorbis -an "$output_file.webm"
+  ffmpeg -i "$input_file" -c:v libx264 -pix_fmt yuv420p -crf 28 -preset veryslow -an "$output_file.mp4"
+}
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# make codex play nicely even when inside an nvm project folder with an older version of node
+codex() {
+  env codex "$@"
+}
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/philfreo/.cache/lm-studio/bin"
+# End of LM Studio CLI section
+
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+
+# Source private/work-specific config if it exists
+[[ -f ~/.zshrc.private ]] && source ~/.zshrc.private
+
+# support Claude code etc
+export PATH="$HOME/.local/bin:$PATH"
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/philfreo/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
