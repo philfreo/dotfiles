@@ -10,12 +10,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -90,9 +84,6 @@ else
   export EDITOR='vim' # mvim
 fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch arm64"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -112,7 +103,7 @@ alias st="clear; git status";
 alias g='git'
 alias gitspp='git stash; git pull --rebase; git stash pop'
 alias gitprp='git pull --rebase && git push'
-alias dc='docker-compose'
+alias dc='docker compose'
 
 alias pbpaste-rtf='osascript -e '\''the clipboard as "HTML"'\''|perl -ne '\''print chr foreach unpack("C*",pack("H*",substr($_,11,-3)))'\'
 
