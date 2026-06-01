@@ -155,5 +155,32 @@ autoload -Uz compinit
 compinit
 # End of Docker CLI completions
 
+export DOCKER_CLI_HINTS=false # turn off Docker Desktop ads
+
 # Source private/work-specific config if it exists
 [[ -f ~/.zshrc.private ]] && source ~/.zshrc.private
+
+# stripe cli autocomplete
+fpath=(~/.stripe $fpath)
+autoload -Uz compinit && compinit -i
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+source <(COMPLETE=zsh devdawg)
+
+
+# pnpm
+export PNPM_HOME="/Users/philfreo/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C
+# <<< grok installer <<<
