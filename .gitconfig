@@ -52,11 +52,10 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	unstage = reset HEAD
 	subdate = submodule update --init --recursive --quiet
-	sub = submodule update --init --recursive --quiet
 	ca = commit --amend
 	fix = commit -a --amend -C HEAD
 	up = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
-	prune = "!git branch --merged | grep -v -P '^\\*|master|develop' | xargs -n1 -r git branch -d"
+	sweep = "!git branch --merged | grep -v -P '^\\*|master|main|develop' | xargs -n1 -r git branch -d"
 	mt = mergetool
 	m = merge --no-ff
 	pu = pull
@@ -73,9 +72,19 @@
 	me = !"git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --author=\"`git config user.name`\" --all"
 	dummy = commit --allow-empty
 
+[fetch]
+	prune = true          # auto-clean deleted remote branches
+[rebase]
+	autostash = true      # replaces your gitspp alias
 [merge]
+	conflictstyle = zdiff3 # shows original text in conflict markers
 	tool = opendiff
 	renamelimit = 50000
+[rerere]
+	enabled = true        # remembers conflict resolutions on rebases
+[branch]
+	sort = -committerdate  # 'git branch' lists recent first
+
 [push]
 	default = simple
 	autoSetupRemote = true

@@ -98,7 +98,6 @@ alias cdg='cd $(git rev-parse --show-cdup)'
 # git shortcuts that git aliases can't easily do
 alias st="clear; git status"
 alias g='git'
-alias gitspp='git stash; git pull --rebase; git stash pop'
 alias gitprp='git pull --rebase && git push'
 alias dc='docker compose'
 
@@ -114,7 +113,8 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # pyenv (via homebrew) for python
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+command -v fzf >/dev/null && source <(fzf --zsh)
+
 # export PATH="/usr/local/sbin:$PATH"
 
 # convertmov input.mov to create a .webm and .mp4
