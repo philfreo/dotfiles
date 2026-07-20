@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# localclaude — run Claude Code against a local LM Studio model.
+# Auto-starts the LM Studio server and auto-selects the largest installed LLM.
+# Override with --model or LOCALCLAUDE_MODEL. Other args pass through to `claude`.
+set -euo pipefail
+
+PORT="${LOCALCLAUDE_PORT:-1234}"
+
+if ! command -v lms >/dev/null 2>&1; then
+  echo "localclaude: 'lms' (LM Studio CLI) not found on PATH." >&2
+  exit 1
+fi
+if ! command -v jq >/dev/null 2>&1; then
+  echo "localclaude: 'jq' not found on PATH." >&2
+  exit 1
+fi
+
+# Start the local server if it isn't already up (idempotent).
+lms server start --port "$PORT" >/dev/null 2>&1 || true
+
+# If the user passed --model explicitly, honor it and don't auto-pick.
+model=""
+for arg in "$@"; do
+  if [ "$arg" = "--model" ]; then model="__EXPLICIT__"; break; fi
+done
+[ -z "$model" ] && model="${LOCALCLAUDE_MODEL:-}"
+
+if [ -z "$model" ]; then
+  # Auto-pick: largest LLM by size.
+  model="$(lms ls --llm --json 2>/dev/null | jq -r 'sort_by(.sizeBytes // 0) | last.modelKey // empty')"
+
+  if [ -z "$model" ]; then
+    echo "localclaude: no LLM models installed in LM Studio." >&2
+    echo "             Download a chat model in the LM Studio app (e.g. openai/gpt-oss-20b)," >&2
+    echo "             then re-run. 'lms ls --llm' should list it." >&2
+    exit 1
+  fi
+  echo "localclaude: using model '$model'" >&2
+fi
+
+export ANTHROPIC_BASE_URL="http://localhost:${PORT}"
+export ANTHROPIC_AUTH_TOKEN="${LOCALCLAUDE_TOKEN:-lmstudio}"
+export CLAUDE_CODE_ATTRIBUTION_HEADER=0
+
+# Load MCP tools inline rather than via ToolSearch. ToolSearch results contain
+# "tool_reference" content blocks that LM Studio's Anthropic-compat endpoint
+# rejects (400). Disabling it means all MCP tools load upfront as normal defs.
+export ENABLE_TOOL_SEARCH=false
+
+# Low effort by default: local models can't use high reasoning budgets and it
+# just wastes their limited context. Override with LOCALCLAUDE_EFFORT.
+args=(--effort "${LOCALCLAUDE_EFFORT:-low}")
+
+# MCP scope (LOCALCLAUDE_MCP):
+#   none (default) — --bare: no MCP, hooks, skills, plugins, memory, or CLAUDE.md.
+#   local          — keep locally-configured servers + plugins, but drop the
+#                    claude.ai account connectors.
+#   all            — keep everything, including claude.ai connectors.
+case "${LOCALCLAUDE_MCP:-none}" in
+  none)  args+=(--bare) ;;
+  all)   ;;
+  *)     export ENABLE_CLAUDEAI_MCP_SERVERS=false ;;
+esac
+
+if [ "$model" = "__EXPLICIT__" ]; then
+  exec claude "${args[@]}" "$@"        # --model already present in "$@"
+else
+  exec claude "${args[@]}" --model "$model" "$@"
+fi
